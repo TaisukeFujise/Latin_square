@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 19:04:41 by tafujise          #+#    #+#             */
-/*   Updated: 2025/09/14 10:15:03 by tafujise         ###   ########.fr       */
+/*   Updated: 2025/09/14 16:31:23 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(int argc, char **argv)
 	int	*view_nums;
 
 	view_nums = malloc(sizeof(int) * N);
-
 	if (argc != 2)
 	{
 		write(1, "Erro5\n", 6);

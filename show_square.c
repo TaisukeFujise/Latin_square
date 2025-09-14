@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 21:23:37 by tafujise          #+#    #+#             */
-/*   Updated: 2025/09/14 04:13:09 by tafujise         ###   ########.fr       */
+/*   Updated: 2025/09/14 10:14:29 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	show_square(int	**square)
 			else if (square[i][j] == 4)
 				write(1, "4", 1);
 			else
-				write(1, "Error", 6);
+				write(1, "Erro4", 6);
 			j++;
 		}
 		write(1, "\n", 1);

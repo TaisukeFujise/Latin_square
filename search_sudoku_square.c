@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 20:41:55 by tafujise          #+#    #+#             */
-/*   Updated: 2025/09/14 09:00:59 by tafujise         ###   ########.fr       */
+/*   Updated: 2025/09/14 16:31:06 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	search_sudoku_square(int *view_nums)
 	int	i;
 	int	j;
 
-	square = (int **)malloc(sizeof(int) * 4);
+	square = (int **)malloc(sizeof(int *) * 4);
 	i = 0;
 	while (i < 4)
 	{
@@ -47,5 +47,4 @@ void	search_sudoku_square(int *view_nums)
 		i++;
 	}
 	create_square(square, view_nums);
-	// show_square(square);
 }
