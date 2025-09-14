@@ -6,46 +6,12 @@
 /*   By: tafujise <tafujise@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 02:15:40 by tafujise          #+#    #+#             */
-/*   Updated: 2025/09/14 04:38:45 by tafujise         ###   ########.fr       */
+/*   Updated: 2025/09/14 09:59:16 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include <stdio.h>
-
-/*
-### 行と列で重複した数字がないかどうかを確認する関数
-1. 引数
-- square : 4×4の二次元配列
-- pos : 参照したい配列内の座標(x, y)をもつ一次元配列
-- number : 現在参照している数字
-2. 返り値
-- true : 1（重複なし）
-- false : 0 (重複あり)
-*/
-int	check_sudoku_num(int **square, int *pos, int number)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < 4)
-	{
-		if (square[pos[0]][i] == number)
-			return (0);
-		i++;
-	}
-	while (j < 4)
-	{
-		if (square[j][pos[1]] == number)
-		{
-			return (0);
-		}
-		j++;
-	}
-	return (1);
-}
-
 /*
 ### TopToBottom(coltop)について確認
 1. 引数
@@ -184,4 +150,15 @@ int	check_right_to_left(int **square, int *pos, int number, int *view_nums)
 	if (count != view_nums[pos[0] + 4 * 3])
 		return (0);
 	return (1);
+}
+
+int	check_view_nums(int **square, int *pos, int number, int *view_nums)
+{
+	if (check_top_to_bottom(square, pos, number, view_nums)
+		&& check_bottom_to_top(square, pos, number, view_nums)
+		&& check_left_to_right(square, pos, number, view_nums)
+		&& check_right_to_left(square, pos, number, view_nums))
+		return (1);
+	else
+		return (0);
 }
