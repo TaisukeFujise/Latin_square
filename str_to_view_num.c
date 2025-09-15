@@ -3,44 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   str_to_view_num.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tafujise <tafujise@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmori <rmori@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 19:07:16 by tafujise          #+#    #+#             */
-/*   Updated: 2025/09/14 16:13:20 by tafujise         ###   ########.fr       */
+/*   Updated: 2025/09/14 22:32:29 by rmori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
-/*
-### 数字文字が'1'~'4'かどうかを確認する関数
-*/
-int	is_valid_num(char c)
+int	stringlen(char *str)
 {
-	return ('1' <= c && c <= '4');
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }
 
-/*
-### コマンドライン引数の文字列をint型の配列にする関数
- */
-void	str_to_view_nums(char *str, int *view_nums)
+int	is_valid_num(char c, int n)
+{
+	return ('1' <= c && c <= (n + 48));
+}
+
+int	str_to_view_nums(char *str, int *view_nums)
 {
 	int	index;
 
-	index = 0;
-	while (index < 16)
+	if (stringlen(str) != (view_nums[0] * 8 - 1))
+		return (0);
+	index = 1;
+	while (index <= (view_nums[0] * 4))
 	{
-		while (!is_valid_num(*str))
-			str++;
-		if (!is_valid_num(*str))
-			write(1, "Erro1\n", 6);
+		if (!is_valid_num(*str, view_nums[0]))
+			return (0);
 		else
 			view_nums[index] = *str - '0';
 		str++;
+		if (!(*str == 32 || *str == 0))
+			return (0);
 		index++;
+		str++;
 	}
-	if (index != 16)
-		write(1, "Erro3\n", 6);
+	if (index != (view_nums[0] * 4 + 1))
+		return (0);
+	return (1);
 }

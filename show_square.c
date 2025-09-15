@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   show_square.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tafujise <tafujise@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmori <rmori@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 21:23:37 by tafujise          #+#    #+#             */
-/*   Updated: 2025/09/14 10:14:29 by tafujise         ###   ########.fr       */
+/*   Updated: 2025/09/14 23:30:05 by rmori            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,28 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-/*
-### 二次元配列を標準出力で出力する関数
-*/
-void	show_square(int	**square)
+void	show_square(int	**square, int n)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	c;
 
-	i = 0;
-	while (i < 4)
+	j = -1;
+	while (++j < n)
 	{
-		j = 0;
-		while (j < 4)
+		i = -1;
+		while (++i < n)
 		{
-			if (square[i][j] == 1)
-				write(1, "1", 1);
-			else if (square[i][j] == 2)
-				write(1, "2", 1);
-			else if (square[i][j] == 3)
-				write(1, "3", 1);
-			else if (square[i][j] == 4)
-				write(1, "4", 1);
+			if (1 <= square[i][j] <= n)
+			{
+				c = square[i][j] + 48;
+				write(1, &c, 1);
+			}
 			else
-				write(1, "Erro4", 6);
-			j++;
+				write(1, "Error\n", 6);
+			if (i != (n - 1))
+				write(1, " ", 1);
 		}
 		write(1, "\n", 1);
-		i++;
 	}
 }
